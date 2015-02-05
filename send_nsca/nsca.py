@@ -393,6 +393,10 @@ class NscaSender(object):
         self._connected = True
 
     def disconnect(self):
+        if not hasattr(self, '_connected'):
+            return
+        if not hasattr(self, '_conns'):
+            return
         if not self._connected:
             return
         for conn, _, _ in self._conns:
